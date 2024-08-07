@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhotosiProducts.Model;
+using PhotosiProducts.Repository.Products;
+using PhotosiProducts.Services;
 
 namespace PhotosiProducts;
 
@@ -43,10 +45,8 @@ public class Startup
         );
 
         await using var serviceProvider = _builder.Services.BuildServiceProvider();
-        // TODO: Dati di prova all'avvio
-        // IMigratorSeeder migratorSeeder = serviceProvider.GetRequiredService<IMigratorSeeder>();
-        // await migratorSeeder.ApplyMigration();
-        // await migratorSeeder.SeedDb();
+        // Applico le migrazioni
+        await serviceProvider.GetRequiredService<Context>().Database.MigrateAsync();
     }
 
     private void ConfigureMyServices(IServiceCollection services)
@@ -54,7 +54,7 @@ public class Startup
         // Aggiunge i propri servizi al container di dependency injection.
         _ = services
             // .AddScoped<IMigratorSeeder, MigratorSeeder>()
-            // .AddScoped<IProductService, ProductService>()
+            .AddScoped<IProductsService, ProductsService>()
             ;
     }
 
@@ -62,7 +62,7 @@ public class Startup
     {
         // Aggiunge i repository al container di dependency injection.
         _ = services
-            // .AddScoped<IProductRepository, ProductRepository>()
+            .AddScoped<IProductsRepository, ProductsRepository>()
             // .AddScoped<ICategoryRepository, CategoryRepository>()
             ;
     }

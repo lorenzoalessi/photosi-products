@@ -9,6 +9,15 @@
     }
   },
   "profiles": {
+    "ProductsService": {
+      "commandName": "Project",
+      "launchUrl": "weatherforecast",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:9001"
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": false,
