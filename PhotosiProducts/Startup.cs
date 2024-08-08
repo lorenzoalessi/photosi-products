@@ -18,8 +18,6 @@ public class Startup
     {
         _ = _builder.Services.AddControllers();
 
-        _builder.Services.AddAutoMapper(typeof(Startup));
-
         ConfigureMyServices(_builder.Services);
 
         ConfigureRepositories(_builder.Services);
