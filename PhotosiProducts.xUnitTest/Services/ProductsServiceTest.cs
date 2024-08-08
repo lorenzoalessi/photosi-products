@@ -3,22 +3,20 @@ using PhotosiProducts.Model;
 using PhotosiProducts.Repository.Products;
 using PhotosiProducts.Services;
 
-namespace PhotosiProducts.UnitTest.Services;
+namespace PhotosiProducts.xUnitTest.Services;
 
-[TestFixture]
 public class ProductsServiceTest : TestSetup
 {
-    private Mock<IProductsRepository> _mockProductRepository;
+    private readonly Mock<IProductsRepository> _mockProductRepository;
     
-    [SetUp]
-    protected override void SetUp()
+    public ProductsServiceTest()
     {
-        base.SetUp();
+        SetUp();
 
         _mockProductRepository = new Mock<IProductsRepository>();
     }
 
-    [Test]
+    [Fact]
     public async Task GetAsync_ShouldReturnList_Always()
     {
         // Arrange
@@ -34,16 +32,16 @@ public class ProductsServiceTest : TestSetup
 
         // Act
         var result = await service.GetAsync();
-
+        
         // Assert
         Assert.Multiple(() =>
         {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Has.Count.EqualTo(products.Count));
-            Assert.That(result.Select(x => x.Id).Except(products.Select(x => x.Id)), Is.Empty);
-            Assert.That(result.Select(x => x.Name).Except(products.Select(x => x.Name)), Is.Empty);
-            Assert.That(result.Select(x => x.Description).Except(products.Select(x => x.Description)), Is.Empty);
-            Assert.That(result.Select(x => x.CategoryId).Except(products.Select(x => x.CategoryId)), Is.Empty);
+            Assert.NotNull(result);
+            Assert.Equal(result.Count, products.Count);
+            Assert.Empty(result.Select(x => x.Id).Except(products.Select(x => x.Id)));
+            Assert.Empty(result.Select(x => x.Name).Except(products.Select(x => x.Name)));
+            Assert.Empty(result.Select(x => x.Description).Except(products.Select(x => x.Description)));
+            Assert.Empty(result.Select(x => x.CategoryId).Except(products.Select(x => x.CategoryId)));
         });
 
         _mockProductRepository.Verify(x => x.GetAsync(), Times.Once);

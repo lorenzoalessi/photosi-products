@@ -2,16 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using PhotosiProducts.Model;
 
-namespace PhotosiProducts.UnitTest;
+namespace PhotosiProducts.xUnitTest;
 
-// https://learn.microsoft.com/it-it/dotnet/core/testing/unit-testing-with-nunit
 public abstract class TestSetup
 {
     protected Context _context;
 
     protected Randomizer _faker;
 
-    protected virtual void SetUp()
+    protected void SetUp()
     {
         _faker = new Randomizer();
 

@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotosiProducts", "PhotosiProducts\PhotosiProducts.csproj", "{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotosiProducts.UnitTest", "PhotosiProducts.UnitTest\PhotosiProducts.UnitTest.csproj", "{B505B5D1-D9C9-4C97-9304-3CC443363697}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotosiProducts.xUnitTest", "PhotosiProducts.xUnitTest\PhotosiProducts.xUnitTest.csproj", "{984327EB-E323-49F7-90EA-62CD813EE606}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B505B5D1-D9C9-4C97-9304-3CC443363697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B505B5D1-D9C9-4C97-9304-3CC443363697}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B505B5D1-D9C9-4C97-9304-3CC443363697}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B505B5D1-D9C9-4C97-9304-3CC443363697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

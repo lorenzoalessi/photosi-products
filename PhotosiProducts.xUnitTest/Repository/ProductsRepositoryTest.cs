@@ -1,18 +1,16 @@
 ﻿using PhotosiProducts.Model;
 using PhotosiProducts.Repository.Products;
 
-namespace PhotosiProducts.UnitTest.Repository;
+namespace PhotosiProducts.xUnitTest.Repository;
 
-[TestFixture] // Serve se ha uno o più test
 public class ProductsRepositoryTest : TestSetup
 {
-    [SetUp] // Tutti i metodi con decoratore [Test] chiamano in automatico i metodi con questo decoratore
-    protected override void SetUp()
+    public ProductsRepositoryTest()
     {
-        base.SetUp();
+        SetUp();
     }
 
-    [Test]
+    [Fact]
     public async Task GetAsync_ShouldReturnList_Always()
     {
         // Arrange
@@ -28,12 +26,12 @@ public class ProductsRepositoryTest : TestSetup
         // Assert
         Assert.Multiple(() =>
         {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Has.Count.EqualTo(products.Count));
-            Assert.That(result.Select(x => x.Id).Except(products.Select(x => x.Id)), Is.Empty);
-            Assert.That(result.Select(x => x.Name).Except(products.Select(x => x.Name)), Is.Empty);
-            Assert.That(result.Select(x => x.Description).Except(products.Select(x => x.Description)), Is.Empty);
-            Assert.That(result.Select(x => x.CategoryId).Except(products.Select(x => x.CategoryId)), Is.Empty);
+            Assert.NotNull(result);
+            Assert.Equal(result.Count, products.Count);
+            Assert.Empty(result.Select(x => x.Id).Except(products.Select(x => x.Id)));
+            Assert.Empty(result.Select(x => x.Name).Except(products.Select(x => x.Name)));
+            Assert.Empty(result.Select(x => x.Description).Except(products.Select(x => x.Description)));
+            Assert.Empty(result.Select(x => x.CategoryId).Except(products.Select(x => x.CategoryId)));
         });
     }
     
