@@ -1,4 +1,6 @@
-﻿using Moq;
+﻿using AutoMapper;
+using Moq;
+using PhotosiProducts.Mapper;
 using PhotosiProducts.Model;
 using PhotosiProducts.Repository.Products;
 using PhotosiProducts.Services;
@@ -8,12 +10,18 @@ namespace PhotosiProducts.xUnitTest.Services;
 public class ProductsServiceTest : TestSetup
 {
     private readonly Mock<IProductsRepository> _mockProductRepository;
+    private readonly IMapper _mapper;
     
     public ProductsServiceTest()
     {
-        SetUp();
-
         _mockProductRepository = new Mock<IProductsRepository>();
+
+        var config = new MapperConfiguration(conf =>
+        {
+            conf.AddProfile(typeof(ProductMapperProfile));
+        });
+
+        _mapper = config.CreateMapper();
     }
 
     [Fact]
@@ -47,7 +55,7 @@ public class ProductsServiceTest : TestSetup
         _mockProductRepository.Verify(x => x.GetAsync(), Times.Once);
     }
 
-    private IProductsService GetService() => new ProductsService(_mockProductRepository.Object);
+    private IProductsService GetService() => new ProductsService(_mockProductRepository.Object, _mapper);
 
     private Product GenerateProduct()
     {
