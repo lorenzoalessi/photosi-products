@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhotosiProducts.Model;
-using PhotosiProducts.Repository.Products;
-using PhotosiProducts.Services;
+using PhotosiProducts.Repository.Product;
+using PhotosiProducts.Service;
 
 namespace PhotosiProducts;
 
@@ -18,17 +18,13 @@ public class Startup
     {
         _ = _builder.Services.AddControllers();
 
+        _builder.Services.AddAutoMapper(typeof(Startup));
         ConfigureMyServices(_builder.Services);
-
         ConfigureRepositories(_builder.Services);
 
         await ConfigureDb();
     }
     
-    /// <summary>
-    /// Configura l'applicazione.
-    /// </summary>
-    /// <param name="app">L'oggetto IApplicationBuilder.</param>
     public void Configure(IApplicationBuilder app)
     {
         _ = app.UseRouting();
@@ -50,18 +46,14 @@ public class Startup
     private void ConfigureMyServices(IServiceCollection services)
     {
         // Aggiunge i propri servizi al container di dependency injection.
-        _ = services
-            // .AddScoped<IMigratorSeeder, MigratorSeeder>()
-            .AddScoped<IProductsService, ProductsService>()
+        _ = services.AddScoped<IProductService, ProductService>()
             ;
     }
 
     private void ConfigureRepositories(IServiceCollection services)
     {
         // Aggiunge i repository al container di dependency injection.
-        _ = services
-            .AddScoped<IProductsRepository, ProductsRepository>()
-            // .AddScoped<ICategoryRepository, CategoryRepository>()
+        _ = services.AddScoped<IProductRepository, ProductRepository>()
             ;
     }
 }

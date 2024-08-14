@@ -1,23 +1,23 @@
 ﻿using PhotosiProducts.Model;
-using PhotosiProducts.Repository.Products;
+using PhotosiProducts.Repository.Product;
 
 namespace PhotosiProducts.xUnitTest.Repository;
 
-public class ProductsRepositoryTest : TestSetup
+public class ProductRepositoryTest : TestSetup
 {
     [Fact]
     public async Task GetAsync_ShouldReturnList_Always()
     {
         // Arrange
         var repository = GetRepository();
-        
+
         var products = Enumerable.Range(0, _faker.Int(10, 30))
             .Select(x => GenerateProductAndSave())
             .ToList();
-        
+
         // Act
         var result = await repository.GetAsync();
-        
+
         // Assert
         Assert.Multiple(() =>
         {
@@ -29,9 +29,9 @@ public class ProductsRepositoryTest : TestSetup
             Assert.Empty(result.Select(x => x.CategoryId).Except(products.Select(x => x.CategoryId)));
         });
     }
-    
-    private IProductsRepository GetRepository() => new ProductsRepository(_context);
-    
+
+    private IProductRepository GetRepository() => new ProductRepository(_context);
+
     private Product GenerateProductAndSave()
     {
         var product = new Product()

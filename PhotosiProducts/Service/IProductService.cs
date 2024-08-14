@@ -1,8 +1,8 @@
 ﻿using PhotosiProducts.Dto;
 
-namespace PhotosiProducts.Services;
+namespace PhotosiProducts.Service;
 
-public interface IProductsService
+public interface IProductService
 {
     Task<List<ProductDto>> GetAsync();
 }

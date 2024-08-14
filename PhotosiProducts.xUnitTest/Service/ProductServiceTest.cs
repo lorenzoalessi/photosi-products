@@ -2,19 +2,19 @@
 using Moq;
 using PhotosiProducts.Mapper;
 using PhotosiProducts.Model;
-using PhotosiProducts.Repository.Products;
-using PhotosiProducts.Services;
+using PhotosiProducts.Repository.Product;
+using PhotosiProducts.Service;
 
-namespace PhotosiProducts.xUnitTest.Services;
+namespace PhotosiProducts.xUnitTest.Service;
 
-public class ProductsServiceTest : TestSetup
+public class ProductServiceTest : TestSetup
 {
-    private readonly Mock<IProductsRepository> _mockProductRepository;
+    private readonly Mock<IProductRepository> _mockProductRepository;
     private readonly IMapper _mapper;
     
-    public ProductsServiceTest()
+    public ProductServiceTest()
     {
-        _mockProductRepository = new Mock<IProductsRepository>();
+        _mockProductRepository = new Mock<IProductRepository>();
 
         var config = new MapperConfiguration(conf =>
         {
@@ -55,7 +55,7 @@ public class ProductsServiceTest : TestSetup
         _mockProductRepository.Verify(x => x.GetAsync(), Times.Once);
     }
 
-    private IProductsService GetService() => new ProductsService(_mockProductRepository.Object, _mapper);
+    private IProductService GetService() => new ProductService(_mockProductRepository.Object, _mapper);
 
     private Product GenerateProduct()
     {
