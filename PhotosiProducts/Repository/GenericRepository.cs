@@ -12,8 +12,29 @@ public class GenericRepository<TDbEntity> : IGenericRepository<TDbEntity> where 
         _context = context;
     }
 
-    public async Task<List<TDbEntity>> GetAsync()
+    public async Task<List<TDbEntity>> GetAsync() => await _context.Set<TDbEntity>().ToListAsync();
+
+    public async Task<TDbEntity> GetByIdAsync(int id) => await _context.Set<TDbEntity>().FindAsync(id);
+    
+    public async Task<TDbEntity> AddAsync(TDbEntity dbEntity)
     {
-        return await _context.Set<TDbEntity>().ToListAsync();
+        await _context.Set<TDbEntity>().AddAsync(dbEntity);
+        await _context.SaveChangesAsync();
+
+        return dbEntity;
     }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        var entity = await _context.Set<TDbEntity>().FindAsync(id);
+        if (entity == null)
+            return false;
+            
+        _context.Set<TDbEntity>().Remove(entity);
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
+    public async Task SaveAsync() => await _context.SaveChangesAsync();
 }

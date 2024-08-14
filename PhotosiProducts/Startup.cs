@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhotosiProducts.Model;
+using PhotosiProducts.Repository.Category;
 using PhotosiProducts.Repository.Product;
 using PhotosiProducts.Service;
 
@@ -54,6 +55,7 @@ public class Startup
     {
         // Aggiunge i repository al container di dependency injection.
         _ = services.AddScoped<IProductRepository, ProductRepository>()
+                .AddScoped<ICategoryRepository, CategoryRepository>()
             ;
     }
 }
