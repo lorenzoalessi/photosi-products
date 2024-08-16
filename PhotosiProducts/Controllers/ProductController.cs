@@ -47,7 +47,7 @@ public class ProductController : ControllerBase
         }
         catch (Exception e) when (e is CategoryException or ProductException)
         {
-            return BadRequest($"Errore nella richiesta di inserimento: {e.Message}");
+            return BadRequest($"Errore nella richiesta di aggiornamento: {e.Message}");
         }
     }
 
