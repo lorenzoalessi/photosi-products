@@ -61,10 +61,7 @@ public class ProductService : IProductService
         return productDto;
     }
 
-    public async Task<bool> DeleteAsync(int id)
-    {
-        return await _productRepository.DeleteAsync(id);
-    }
+    public async Task<bool> DeleteAsync(int id) => await _productRepository.DeleteAsync(id);
 
     private async Task CheckExistingCategory(int categoryId)
     {

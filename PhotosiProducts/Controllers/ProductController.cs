@@ -72,18 +72,11 @@ public class ProductController : ControllerBase
     {
         if (id < 1)
             return BadRequest("ID fornito non valido");
-
-        try
-        {
-            var deleted = await _productService.DeleteAsync(id);
-            if (!deleted)
-                return StatusCode(500, "Errore nella richiesta di eliminazione");
+        
+        var deleted = await _productService.DeleteAsync(id);
+        if (!deleted)
+            return StatusCode(500, "Errore nella richiesta di eliminazione");
             
-            return Ok($"Prodotto con ID {id} eliminato con successo");
-        }
-        catch (ProductException e)
-        {
-            return BadRequest($"Errore nella richiesta di eliminazione: {e.Message}");
-        }
+        return Ok($"Prodotto con ID {id} eliminato con successo");
     }
 }
