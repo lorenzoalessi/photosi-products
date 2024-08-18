@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PhotosiProducts.Model;
 
+[ExcludeFromCodeCoverage]
 [Table("category")]
 public class Category
 {

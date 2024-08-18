@@ -102,6 +102,22 @@ public class GenericRepositoryTest : TestSetup
         Assert.Equal(result, deleteSuccess);
     }
 
+    [Fact]
+    public async Task SaveAsync_ShouldNotThrowException_Always()
+    {
+        // Arrange
+        var repository = GetRepository();
+
+        var product = GenerateProduct();
+        await _context.AddAsync(product);
+        
+        // Act
+        await repository.SaveAsync();
+        
+        // Assert
+        Assert.True(product.Id > 0);
+    }
+    
     private IGenericRepository<Product> GetRepository() => new GenericRepository<Product>(_context);
 
     private Product GenerateProductAndSave()

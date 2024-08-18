@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using PhotosiProducts.Model;
 using PhotosiProducts.Repository.Category;
 using PhotosiProducts.Repository.Product;
@@ -6,6 +7,7 @@ using PhotosiProducts.Service;
 
 namespace PhotosiProducts;
 
+[ExcludeFromCodeCoverage]
 public class Startup
 {
     private readonly WebApplicationBuilder _builder;

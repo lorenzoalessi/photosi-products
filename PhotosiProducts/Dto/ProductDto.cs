@@ -1,5 +1,8 @@
-﻿namespace PhotosiProducts.Dto;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace PhotosiProducts.Dto;
+
+[ExcludeFromCodeCoverage]
 public class ProductDto
 {
     public int Id { get; set; }

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
 using PhotosiProducts.Dto;
 using PhotosiProducts.Exceptions;
@@ -5,6 +6,8 @@ using PhotosiProducts.Service;
 
 namespace PhotosiProducts.Controllers;
 
+// Escluso dal code coverage perche' potrebbe essere testato tramite integration test e non unit test
+[ExcludeFromCodeCoverage]
 [ApiController]
 [Route("api/v1/products")]
 public class ProductController : ControllerBase

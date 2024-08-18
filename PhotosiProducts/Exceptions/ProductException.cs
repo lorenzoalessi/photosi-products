@@ -1,5 +1,8 @@
-﻿namespace PhotosiProducts.Exceptions;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace PhotosiProducts.Exceptions;
+
+[ExcludeFromCodeCoverage]
 public class ProductException : Exception
 {
     public ProductException()

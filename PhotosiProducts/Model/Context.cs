@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 
 namespace PhotosiProducts.Model;
 
+[ExcludeFromCodeCoverage]
 public class Context : DbContext
 {
     public Context()
