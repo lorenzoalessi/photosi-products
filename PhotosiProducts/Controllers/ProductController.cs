@@ -46,7 +46,7 @@ public class ProductController : ControllerBase
         try
         {
             var result = await _productService.UpdateAsync(id, productDto);
-            return Ok($"Prodotto con ID {result.Id} salvato successo");
+            return Ok($"Prodotto con ID {id} modificato con successo");
         }
         catch (Exception e) when (e is CategoryException or ProductException)
         {
