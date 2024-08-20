@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotosiProducts", "PhotosiProducts\PhotosiProducts.csproj", "{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotosiProducts.xUnitTest", "PhotosiProducts.xUnitTest\PhotosiProducts.xUnitTest.csproj", "{984327EB-E323-49F7-90EA-62CD813EE606}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8955E03-0CB0-4DF3-A414-AA3E763A7EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{984327EB-E323-49F7-90EA-62CD813EE606}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
