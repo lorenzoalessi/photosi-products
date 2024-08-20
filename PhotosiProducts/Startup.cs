@@ -44,12 +44,16 @@ public class Startup
         await using var serviceProvider = _builder.Services.BuildServiceProvider();
         // Applico le migrazioni
         await serviceProvider.GetRequiredService<Context>().Database.MigrateAsync();
+        
+        // Seeder per dei dati iniziali
+        await serviceProvider.GetRequiredService<Seeder.Seeder>().SeedDb();
     }
 
     private void ConfigureMyServices(IServiceCollection services)
     {
         // Aggiunge i propri servizi al container di dependency injection.
         _ = services.AddScoped<IProductService, ProductService>()
+                .AddScoped<Seeder.Seeder>()
             ;
     }
 
